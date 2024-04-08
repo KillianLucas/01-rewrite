@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "01-spider"
+version = "0.1.0"
+description = ""
+authors = ["killian <63927363+KillianLucas@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "<3.12,>=3.9"
+realtimestt = "^0.1.12"
+realtimetts = "^0.3.43"
+keyboard = "^0.13.5"
+open-interpreter = {git = "https://github.com/OpenInterpreter/open-interpreter"}
+simpleaudio = "^1.0.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
