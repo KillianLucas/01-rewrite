@@ -7,6 +7,24 @@ import random
 import subprocess
 import asyncio
 
+# # Setup nltk (you may need to do this)
+
+# import nltk
+# import ssl
+
+# try:
+#     _create_unverified_https_context = ssl._create_unverified_context
+# except AttributeError:
+#     pass
+# else:
+#     ssl._create_default_https_context = _create_unverified_https_context
+
+# nltk.download('punkt')
+
+# # Set OpenAI key (you may need to do this)
+# import os
+# os.environ["OPENAI_API_KEY"] = "your_api_key"
+
 interpreter = OpenInterpreter(import_computer_api=True, import_skills=False)
 interpreter.auto_run = True
 interpreter.llm.context_window = 100000
@@ -78,20 +96,6 @@ ALWAYS browse the web for basic information with computer.browser.search(query).
 Try multiple methods before saying the task is impossible. **You can do it!**
 
 """.strip()
-
-# # Setup nltk (you may need to do this)
-
-# import nltk
-# import ssl
-
-# try:
-#     _create_unverified_https_context = ssl._create_unverified_context
-# except AttributeError:
-#     pass
-# else:
-#     ssl._create_default_https_context = _create_unverified_https_context
-
-# nltk.download('punkt')
 
 import threading
 import time
