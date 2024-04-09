@@ -3,9 +3,10 @@ import time
 from RealtimeSTT import AudioToTextRecorder
 from RealtimeTTS import OpenAIEngine, TextToAudioStream
 from interpreter import OpenInterpreter
-import random
 import subprocess
-import asyncio
+import threading
+import time
+import subprocess
 
 # # Setup nltk (you may need to do this)
 
@@ -22,8 +23,12 @@ import asyncio
 # nltk.download('punkt')
 
 # # Set OpenAI key (you may need to do this)
+
 # import os
 # os.environ["OPENAI_API_KEY"] = "your_api_key"
+
+
+### INTERPRETER CONFIGURATION ###
 
 interpreter = OpenInterpreter(import_computer_api=True, import_skills=False)
 interpreter.auto_run = True
@@ -97,12 +102,14 @@ Try multiple methods before saying the task is impossible. **You can do it!**
 
 """.strip()
 
-import threading
-import time
-import subprocess
+
+### DEVICE SOUNDS ###
 
 def beep(sound):
-    subprocess.Popen(["afplay", f"/System/Library/Sounds/{sound}.aiff"])
+    try:
+        subprocess.Popen(["afplay", f"/System/Library/Sounds/{sound}.aiff"])
+    except:
+        pass # No big deal
 
 class RepeatedBeep:
     def __init__(self):
@@ -114,7 +121,10 @@ class RepeatedBeep:
     def _play_sound(self):
         while True:
             if self.running:
-                subprocess.call(["afplay", f"/System/Library/Sounds/{self.sound}.aiff"])
+                try:
+                    subprocess.call(["afplay", f"/System/Library/Sounds/{self.sound}.aiff"])
+                except:
+                    pass # No big deal
                 time.sleep(0.6)
             time.sleep(0.05)
 
@@ -127,6 +137,9 @@ class RepeatedBeep:
         self.running = False
 
 beeper = RepeatedBeep()
+
+
+### MAIN PROGRAM ###
 
 if __name__ == '__main__':
     recorder = AudioToTextRecorder()
