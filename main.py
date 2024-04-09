@@ -1,7 +1,7 @@
 import keyboard
 import time
 from RealtimeSTT import AudioToTextRecorder
-from RealtimeTTS import OpenAIEngine, TextToAudioStream
+from RealtimeTTS import OpenAIEngine, CoquiEngine, TextToAudioStream
 from interpreter import OpenInterpreter
 import subprocess
 import threading
@@ -25,7 +25,7 @@ import subprocess
 # # Set OpenAI key (you may need to do this)
 
 # import os
-# os.environ["OPENAI_API_KEY"] = "your_api_key"
+# os.environ["OPENAI_API_KEY"] = "your-key"
 
 
 ### INTERPRETER CONFIGURATION ###
@@ -146,6 +146,7 @@ if __name__ == '__main__':
     recorder.stop()
 
     engine = OpenAIEngine()
+    # engine = CoquiEngine()
     stream = TextToAudioStream(engine)
 
     beep("Blow")
