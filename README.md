@@ -4,5 +4,5 @@
 git clone https://github.com/KillianLucas/01-rewrite.git
 cd 01-rewrite
 poetry install
-poetry run python main.py
+sudo poetry run python main.py
 ```
