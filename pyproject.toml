@@ -9,9 +9,9 @@ readme = "README.md"
 python = "<3.12,>=3.9"
 realtimestt = "^0.1.12"
 realtimetts = "^0.3.43"
-keyboard = "^0.13.5"
 open-interpreter = {git = "https://github.com/OpenInterpreter/open-interpreter"}
 simpleaudio = "^1.0.4"
+pynput = "^1.7.6"
 
 [build-system]
 requires = ["poetry-core"]
