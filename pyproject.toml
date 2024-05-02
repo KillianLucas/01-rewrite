@@ -20,6 +20,8 @@ elevenlabs = "0.2.27"
 groq = "^0.5.0"
 pynput = "^1.7.6"
 open-interpreter = "^0.2.5"
+python-dateutil = "^2.9.0.post0"
+parsedatetime = "^2.6"
 
 [build-system]
 requires = ["poetry-core"]

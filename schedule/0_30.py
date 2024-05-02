@@ -10,9 +10,17 @@ import os
 import json
 import requests
 import difflib
+import platform
 
 # Get the list of connected peripherals
-peripherals = os.popen('lsusb').read().split('\n')
+if platform.system() == 'Linux':
+    peripherals = os.popen('lsusb').read().split('\n')
+elif platform.system() == 'Windows':
+    peripherals = os.popen('wmic path win32_physicalmedia get SerialNumber').read().split('\n')
+elif platform.system() == 'Darwin':
+    peripherals = os.popen('system_profiler SPUSBDataType').read().split('\n')
+else:
+    peripherals = []
 
 # Load previous peripherals from file, or set to empty if file doesn't exist
 try:
