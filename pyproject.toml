@@ -8,10 +8,18 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "<3.12,>=3.9"
 realtimestt = "^0.1.12"
-realtimetts = "^0.3.43"
+realtimetts = "^0.3.44"
 keyboard = "^0.13.5"
-open-interpreter = {git = "https://github.com/OpenInterpreter/open-interpreter"}
 simpleaudio = "^1.0.4"
+opencv-python = "^4.9.0.80"
+pyautogui = "^0.9.54"
+ctranslate2 = "4.1.0"
+py3-tts = "^3.5"
+ffmpeg-python = "^0.2.0"
+elevenlabs = "0.2.27"
+groq = "^0.5.0"
+pynput = "^1.7.6"
+open-interpreter = "^0.2.5"
 
 [build-system]
 requires = ["poetry-core"]
