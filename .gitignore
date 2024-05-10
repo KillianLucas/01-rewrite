@@ -3,3 +3,4 @@ __pycache__
 models
 realtimesst.log
 peripherals.json
+experiments

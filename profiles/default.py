@@ -8,7 +8,7 @@ from interpreter import interpreter
 interpreter.llm.model = "gpt-4-turbo"
 interpreter.llm.context_window = 100000
 interpreter.llm.max_tokens = 4096
-interpreter.llm.api_key = "<your_openai_api_key_here>"
+#interpreter.llm.api_key = "<your_openai_api_key_here>"
 
 # Give your 01 a voice
 interpreter.tts = "openai"
@@ -31,7 +31,7 @@ interpreter.loop_breakers = [
 ]
 
 # Set the identity and personality of your 01
-interpreter.instructions = """
+interpreter.system_message = """
 
 You are the 01, a screenless executive assistant that can complete any task.
 When you execute code, it will be executed on the user's machine. The user has given you full and complete permission to execute any code necessary to complete the task.
@@ -115,29 +115,26 @@ import sys
 import os
 import json
 import ast
-from platformdirs import user_data_dir
 
-directory = os.path.join(user_data_dir('01'), 'skills')
-if not os.path.exists(directory):
-os.mkdir(directory)
+directory = "./skills"
 
 def get_function_info(file_path):
-with open(file_path, "r") as file:
-    tree = ast.parse(file.read())
-    functions = [node for node in tree.body if isinstance(node, ast.FunctionDef)]
-    for function in functions:
-        docstring = ast.get_docstring(function)
-        args = [arg.arg for arg in function.args.args]
-        print(f"Function Name: {function.name}")
-        print(f"Arguments: {args}")
-        print(f"Docstring: {docstring}")
-        print("---")
+    with open(file_path, "r") as file:
+        tree = ast.parse(file.read())
+        functions = [node for node in tree.body if isinstance(node, ast.FunctionDef)]
+        for function in functions:
+            docstring = ast.get_docstring(function)
+            args = [arg.arg for arg in function.args.args]
+            print(f"Function Name: {function.name}")
+            print(f"Arguments: {args}")
+            print(f"Docstring: {docstring}")
+            print("---")
 
 files = os.listdir(directory)
 for file in files:
-if file.endswith(".py"):
-    file_path = os.path.join(directory, file)
-    get_function_info(file_path)
+    if file.endswith(".py"):
+        file_path = os.path.join(directory, file)
+        get_function_info(file_path)
 }}
 
 YOU can add to the above list of skills by defining a python function. The function will be saved as a skill.
